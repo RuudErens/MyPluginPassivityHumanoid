@@ -1,5 +1,5 @@
 # This configuration is used to run a few iterations of the controller
-MainRobot: HRP5Ps
+MainRobot: HRP5P
 Enabled: Posture
 
 IncludeHalfSitController: false

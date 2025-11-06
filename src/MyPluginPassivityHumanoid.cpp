@@ -109,7 +109,11 @@ void MyPluginPassivityHumanoid::before(mc_control::MCGlobalController & controll
 {
   auto & ctl = static_cast<mc_control::MCGlobalController &>(controller);
   auto & robot = ctl.robot();
-  
+
+  if(!ctl.controller().datastore().has("Coriolis")){
+    datastore().make<std::string>("Coriolis", "Yes");
+  }
+
   auto coriolis_activation = ctl.controller().datastore().get<std::string>("Coriolis");
   if (coriolis_activation.compare("Yes") == 0) {coriolis_indicator_ = true;coriolis_indicator_value_=1.0; }
   else {coriolis_indicator_ = false;coriolis_indicator_value_=0.0; }
