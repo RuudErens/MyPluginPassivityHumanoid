@@ -31,11 +31,11 @@ void MyPluginPassivityHumanoid::init(mc_control::MCGlobalController & controller
   solver_ = std::make_shared<jrl::qp::experimental::BoxAndSingleConstraintSolver>(robot.mb().nrJoints());
 
   // ========== Check for Virtual Torque Sensor to hold feedback term value ========== //
-  if (!robot.hasDevice<mc_rbdyn::VirtualTorqueSensor>("virtualTorqueSensor"))
+  if (!robot.hasDevice<mc_rbdyn::VirtualTorqueSensor>("ExtTorquesVirtSensor"))
   {
-    mc_rtc::log::error_and_throw<std::runtime_error>("[MyPluginPassivityHumanoid][Init] No \"VirtualTorqueSensor\" with the name \"virtualTorqueSensor\" found in the robot module, please add one to the robot's RobotModule.");
+    mc_rtc::log::error_and_throw<std::runtime_error>("[MyPluginPassivityHumanoid][Init] No \"VirtualTorqueSensor\" with the name \"ExtTorquesVirtSensor\" found in the robot module, please add one to the robot's RobotModule.");
   }
-  virtual_torque_sensor_ = &robot.device<mc_rbdyn::VirtualTorqueSensor>("virtualTorqueSensor");
+  virtual_torque_sensor_ = &robot.device<mc_rbdyn::VirtualTorqueSensor>("ExtTorquesVirtSensor");
   dt_ = ctl.timestep();
   coriolis_ = new rbd::Coriolis(robot.mb());
   fd_ = new rbd::ForwardDynamics(robot.mb());
