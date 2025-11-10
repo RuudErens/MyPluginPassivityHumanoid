@@ -93,6 +93,10 @@ private:
   double power_;
   /** Configuration velocity reference from the integral of configuration acceleration reference*/
   Eigen::VectorXd alpha_r_;
+  /** Configuration velocity*/
+  Eigen::VectorXd alpha_;
+  /** Configuration acceleration*/
+  Eigen::VectorXd alpha_d_;
   /** Velocity gain matrix */
   Eigen::MatrixXd K_;
   /** Velocity gain matrix diagonal*/
@@ -123,9 +127,13 @@ private:
   Eigen::VectorXd tau_coriolis_;
   /** Torque current motor */
   Eigen::VectorXd tau_current_;
+  /** Torque calculated by solver */
+  Eigen::VectorXd tau_after_solve_;
+  /** Torque from only doing K_*s_ */
+  Eigen::VectorXd tau_K_s_;
   /** Torque lower bound */
   Eigen::VectorXd torqueL_;
-  /** Torque lower bound */
+  /** Torque upper bound */
   Eigen::VectorXd torqueU_;
   /** maximal angular acceleration */
   Eigen::Vector3d maxAngAcc_ ; 
