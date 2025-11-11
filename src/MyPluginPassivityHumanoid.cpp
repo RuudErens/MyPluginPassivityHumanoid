@@ -201,7 +201,7 @@ void MyPluginPassivityHumanoid::before(mc_control::MCGlobalController & controll
 
     tau_coriolis_ = coriolis_indicator_value_ * C_ * s_;
     K_ = lambda_massmatrix_ * fd_->H() + lambda_id_ * Eigen::MatrixXd::Identity(robot.mb().nrDof(), robot.mb().nrDof());
-    tau_ = K_ * s_;
+    tau_ = -1 * K_ * s_;
 
     tau_K_s_ = tau_;
 
@@ -269,7 +269,7 @@ void MyPluginPassivityHumanoid::before(mc_control::MCGlobalController & controll
         tau_ /= epsilon;
       }
     }
-    tau_ += tau_coriolis_;
+    tau_ -= tau_coriolis_;
     virtual_torque_sensor_->torques(tau_);
   }
 
