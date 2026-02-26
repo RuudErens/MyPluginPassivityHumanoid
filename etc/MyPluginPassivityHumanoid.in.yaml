@@ -1,11 +1,24 @@
 integration_type: Filtered
-lambda_massmatrix: 5 # originally 50
+lambda_massmatrix: 15 # originally 50
 labda_diag_massmatrix: 0.0
-lambda_id: 3 # originally 30
+lambda_id: 10 # originally 30
 phi_slow: 0.03
 phi_fast: 30.0
-fast_filter_weight: 0.8
-perc: 80
+fast_filter_weight: 0.9
+perc: 10
 coriolis_indicator: true
 maxLinAcc : [0.5,0.5,10]
 maxAngAcc : [0.087,0.087,0.087]
+
+
+#integration_type: Filtered
+#lambda_massmatrix: 30 # originally 50
+#labda_diag_massmatrix: 0.0
+#lambda_id: 20 # originally 30
+#phi_slow: 0.03
+#phi_fast: 30.0
+#fast_filter_weight: 0.99
+#perc: 10
+#coriolis_indicator: true
+#maxLinAcc : [0.5,0.5,10]
+#maxAngAcc : [0.087,0.087,0.087]
